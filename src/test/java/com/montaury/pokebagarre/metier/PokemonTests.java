@@ -1,6 +1,8 @@
 package com.montaury.pokebagarre.metier;
 
-import org.junit.jupiter.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,13 +14,11 @@ class PokemonTests {
         Pokemon pokemon1 = new Pokemon("Joueur1", "oui", new Stats(200, 150));
         Pokemon pokemon2 = new Pokemon("Joueur2", "non", new Stats(199, 150));
 
-        //WHEN
-        boolean res1 = pokemon1.estVainqueurContre(pokemon2);
-        boolean res2 = pokemon2.estVainqueurContre(pokemon1);
+        var res = pokemon1.estVainqueurContre(pokemon2);
 
         //THEN
-        Assertions.assertEquals(true, res1);
-        Assertions.assertEquals(false, res2);
+        assertThat(res).isTrue();
+        ;
     }
 
     @Test
@@ -28,12 +28,10 @@ class PokemonTests {
         Pokemon pokemon2 = new Pokemon("Joueur2", "non", new Stats(201, 150));
 
         //WHEN
-        boolean res1 = pokemon1.estVainqueurContre(pokemon2);
-        boolean res2 = pokemon2.estVainqueurContre(pokemon1);
+        var res = pokemon2.estVainqueurContre(pokemon1);
 
         //THEN
-        Assertions.assertEquals(false, res1);
-        Assertions.assertEquals(true, res2);
+        Assertions.assertThat(res).isTrue();
     }
 
     @Test
@@ -43,12 +41,10 @@ class PokemonTests {
         Pokemon pokemon2 = new Pokemon("Joueur2", "non", new Stats(200, 150));
 
         //WHEN
-        boolean res1 = pokemon1.estVainqueurContre(pokemon2);
-        boolean res2 = pokemon2.estVainqueurContre(pokemon1);
+        var res = pokemon1.estVainqueurContre(pokemon2);
 
         //THEN
-        Assertions.assertEquals(true, res1);
-        Assertions.assertEquals(false, res2);
+        Assertions.assertThat(res).isTrue();
     }
 
     @Test
@@ -58,12 +54,10 @@ class PokemonTests {
         Pokemon pokemon2 = new Pokemon("Joueur2", "non", new Stats(200, 150));
 
         //WHEN
-        boolean res1 = pokemon1.estVainqueurContre(pokemon2);
-        boolean res2 = pokemon2.estVainqueurContre(pokemon1);
+        var res = pokemon2.estVainqueurContre(pokemon1);
 
         //THEN
-        Assertions.assertEquals(false, res1);
-        Assertions.assertEquals(true, res2);
+        Assertions.assertThat(res).isTrue();
     }
 
     @Test
@@ -73,11 +67,9 @@ class PokemonTests {
         Pokemon pokemon2 = new Pokemon("Joueur2", "non", new Stats(200, 150));
 
         //WHEN
-        boolean res1 = pokemon1.estVainqueurContre(pokemon2);
-        boolean res2 = pokemon2.estVainqueurContre(pokemon1);
+        boolean res = pokemon1.estVainqueurContre(pokemon2);
 
         //THEN
-        Assertions.assertEquals(true, res1);
-        Assertions.assertEquals(true, res2);
+        Assertions.assertThat(res).isTrue();
     }
 }
